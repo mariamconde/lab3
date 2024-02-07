@@ -1,5 +1,14 @@
 /*Variables*/
-
+:root {
+    --primary-color: #0c3b2e;
+    --primary-bg-color: #304734;
+    --light-color: #fff;
+    --pop-color: #ffba00;
+  }
+  body {
+    background-color: var(--primary-bg-color);
+    color: var(--light-color);
+  }
 
 /*================================================*/
 /*Reset and General Styles*/
@@ -32,7 +41,7 @@ ul {
 
 header, footer{
     background-color:  #0c3b2e;
-    color: white;
+    color: #fff;
 }
 /*================================================*/
 /*Utility Classes*/
@@ -49,33 +58,78 @@ header, footer{
 }
 /*================================================*/
 /*Overall layouts*/
-
-
-
+body {
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header header"
+      "nav main main"
+      "footer footer footer";
+  }
+ 
+  /* Place each element in the proper grid area using grid-area property */
+  header {
+    grid-area: header;
+    position: sticky; /* Make the header sticky */
+    top: 0;
+    background-color: var(--primary-bg-color);
+    z-index: 100;
+  }
+ 
+  nav {
+    grid-area: nav;
+  }
+ 
+  main {
+    grid-area: main;
+  }
+ 
+  footer {
+    grid-area: footer;
+    position: sticky; /* Make the footer sticky */
+    bottom: 0;
+    background-color: var(--primary-bg-color);
+    z-index: 100;
+  }
 
 /*================================================*/
 /*Header styles*/
 h1 {
-    
+   
     padding-left: 1rem;
 }
 
 nav li {
     padding-right: 1rem;
-    font-size: 1.5rem;
-} 
-
-nav a {
-    color: white;
+    font-size: 1.0rem;
 }
 
-nav a:hover, 
+nav a {
+    color: #fff;
+}
+
+nav a:hover,
 nav a:active{
     border-bottom: 4px solid #6d9773;
 }
 /*================================================*/
 /*Header layouts*/
-
+header {
+    display: flex;
+    flex-direction: column; /* Make items flow vertically */
+    justify-content: space-evenly; /* Evenly distribute space along the main axis */
+  }
+ 
+  /* Select the ul inside the nav and make it a flex container */
+  nav ul {
+    display: flex;
+    flex-direction: row; /* Make items flow horizontally */
+    justify-content: flex-end; /* Make items pack to the right */
+    gap: 1rem; /* Add spacing between list items */
+    padding-right: 0; /* Remove the right padding for each list item */
+    align-items: center; /* Center items along the cross axis */
+  }
 
 
 
@@ -85,12 +139,15 @@ nav a:active{
 main {
     padding: 1rem;
     background-color: #fff;
+    grid-column-end: 3;
 }
 
 
 h2 {
     color: #ffba00;
+   
     margin-bottom: 1rem;
+   
 }
 
 img {
@@ -112,6 +169,7 @@ main li {
 
 main a {
     color: #6d9773;
+ 
 }
 
 main a:hover,
@@ -121,6 +179,10 @@ main a:active {
 /*================================================*/
 /*Menu page content*/
 
+
+
+/*================================================*/
+/*Main content area layouts*/
 table {
     border: 3px solid #6D9773;
     border-collapse: collapse;
@@ -130,13 +192,13 @@ table {
 
 thead tr {
     background-color: #6d9773;
-    color: white;
+    color: #fff;
 }
 
-th, 
+th,
 td {
     padding: 0.3rem;
-    text-align: center;
+    text-align: right;
 }
 
 tbody tr:nth-child(4n) {
@@ -146,13 +208,13 @@ tbody tr:nth-child(4n) {
 caption {
     font-weight: bold;
     text-align: right;
-    font-style: italic; 
+    font-style: italic;
 }
 /*================================================*/
 /*Reservations page*/
 input[type="text"],
-input[type="email"], 
-input[type="tel"], 
+input[type="email"],
+input[type="tel"],
 input[type="datetime-local"],
 input[type="number"],
 textarea{
@@ -160,7 +222,7 @@ textarea{
   margin-bottom: 0.5em;
   width: 100%;
   padding: 0.6em;
-  
+ 
 }
 
 textarea {
@@ -174,17 +236,49 @@ input[type="submit"] {
     font-size: 1.25rem;
     font-weight: bold;
     padding: 0.5em 1em;
-    border-radius: 5px; 
+    border-radius: 5px;
   }
+ 
 /*================================================*/
 /*Style 'container-content' class*/
-
-
-
-/*================================================*/
-/*Main content area layouts*/
-
-
-
+.container-content {
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(17, 12, 46, 0.8);
+  }
+ 
+  /* Style for the 'main' element */
+  main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+ 
+  /* Set a maximum width for the containers and allow them to grow */
+  .container-content,
+  .container-img {
+    flex-basis: 300px;
+    flex-grow: 1;
+    max-width: 500px;
+  }
+  .btn{
+    display: flex;
+    justify-content: right;
+  }
+ 
+ 
 /*================================================*/
 /*Footer layouts*/
+/* Select the footer element and apply flex properties */
+footer {
+    display: flex;
+    justify-content: center; /* Center horizontally along the main axis */
+    align-items: center; /* Center vertically along the cross-axis */
+  }
+ 
+  /* Style for the paragraph (adjust as needed) */
+  footer p {
+    /* Add any additional styling for the paragraph here */
+  }
